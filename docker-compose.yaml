@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mongodb:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: DEVELOPMENT
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    command: npm run start:dev
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    image: mongo:latest
